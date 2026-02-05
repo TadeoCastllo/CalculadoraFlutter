@@ -117,7 +117,10 @@ class _CalculadoraState extends State<Calculadora> {
     return Scaffold(
       appBar: MediaQuery.of(context).orientation == Orientation.landscape
           ? null
-          : AppBar(title: const Text("Calculadora Académica")),
+          : AppBar(
+              title: const Text("Calculadora Académica"),
+              centerTitle: true,
+            ),
       body: SafeArea(
         child: OrientationBuilder(
           builder: (context, orientation) {
@@ -138,8 +141,7 @@ class _CalculadoraState extends State<Calculadora> {
                         ? Alignment.centerRight
                         : Alignment.bottomRight,
                     child: FittedBox(
-                      fit: BoxFit
-                          .contain,
+                      fit: BoxFit.contain,
                       alignment: Alignment.centerRight,
                       child: Text(
                         display.isEmpty ? '0' : display,
