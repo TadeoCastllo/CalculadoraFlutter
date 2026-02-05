@@ -94,7 +94,6 @@ class _CalculadoraState extends State<Calculadora> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
-            // Mantenemos el padding ajustado para que no vuelva el error de overflow
             padding: EdgeInsets.symmetric(vertical: isLandscape ? 10 : 24),
             elevation: 2,
           ),
@@ -116,7 +115,6 @@ class _CalculadoraState extends State<Calculadora> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Truco PRO: Ocultamos la AppBar en horizontal para ganar MUCHO espacio para el número
       appBar: MediaQuery.of(context).orientation == Orientation.landscape
           ? null
           : AppBar(title: const Text("Calculadora Académica")),
@@ -130,8 +128,6 @@ class _CalculadoraState extends State<Calculadora> {
                 // Display
                 Expanded(
                   child: Container(
-                    // CORRECCIÓN CLAVE: En horizontal (landscape), quitamos el padding vertical
-                    // para que el texto pueda crecer al máximo.
                     padding: isLandscape
                         ? const EdgeInsets.symmetric(
                             horizontal: 20,
@@ -143,12 +139,11 @@ class _CalculadoraState extends State<Calculadora> {
                         : Alignment.bottomRight,
                     child: FittedBox(
                       fit: BoxFit
-                          .contain, // Cambiado a contain para intentar llenar más
+                          .contain,
                       alignment: Alignment.centerRight,
                       child: Text(
                         display.isEmpty ? '0' : display,
                         style: const TextStyle(
-                          // Tamaño de fuente aumentado
                           fontSize: 80,
                           fontWeight: FontWeight.w300,
                           color: Colors.white,
